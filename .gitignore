@@ -1,0 +1,28 @@
+# Байт-код Python
+__pycache__/
+*.py[cod]
+
+# Виртуальное окружение
+.venv/
+venv/
+env/
+
+# Кэш pytest
+.pytest_cache/
+
+# Результаты и отчеты Allure
+allure-results/
+allure-report/
+
+# Отчёты о покрытии (если понадобится запускать с coverage)
+.coverage
+.coverage.*
+htmlcov/
+
+# Служебные файлы IDE
+.idea/
+.vscode/
+
+# Системный мусор
+.DS_Store
+Thumbs.db
