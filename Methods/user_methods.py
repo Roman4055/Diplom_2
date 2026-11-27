@@ -2,10 +2,18 @@ import requests
 from urls import CREATE_USER, LOGIN_USER, LOGOUT_USER, REFRESH_TOKEN, DELETE_USER
 from tokens import Tokens
 
+
 class UserMethods:
     @staticmethod
     def create_user(email: str, password: str, name: str):
-        payload = {'email': email, 'password': password, 'name': name}
+        # Поля со значением None не включаем в payload:
+        # отправка 'email': null — это не «отсутствующее поле»,
+        # а другой сценарий, который сервер может обрабатывать иначе.
+        payload = {
+            key: value
+            for key, value in {'email': email, 'password': password, 'name': name}.items()
+            if value is not None
+        }
         return requests.post(CREATE_USER, json=payload)
 
     @staticmethod
